@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Search AO3 in plain English." />
+  <title>AO3 LLM | Awbem</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">Awbem</a>
+    <span class="divider">/</span>
+    <span>AO3 LLM</span>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <p class="eyebrow">Natural-language fanfiction search</p>
+      <h1>Tell me what kind of fic you want.</h1>
+      <p class="lede">
+        Describe the fandom, pairing, tropes, themes, warnings, length, and anything you want included or excluded.
+        AO3 LLM turns that into a search and ranks the real AO3 results by how well they match.
+      </p>
+    </section>
+
+    <section class="search-card" aria-labelledby="search-heading">
+      <h2 id="search-heading" class="sr-only">Search</h2>
+
+      <form id="search-form">
+        <label for="query">What are you looking for?</label>
+        <textarea
+          id="query"
+          name="query"
+          rows="7"
+          maxlength="3000"
+          placeholder="Example: Find me Harry Potter fics where Harry and Draco are forced to work together, enemies-to-lovers, completed, preferably over 50k words. Explicit is fine. Exclude Underage and character bashing."
+          required
+        ></textarea>
+
+        <div class="form-row">
+          <label class="select-label" for="result-count">
+            Results
+            <select id="result-count" name="resultCount">
+              <option value="10">10</option>
+              <option value="15" selected>15</option>
+              <option value="20">20</option>
+            </select>
+          </label>
+
+          <button id="search-button" type="submit">
+            <span class="button-label">Search AO3</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+      </form>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="plan-panel" class="plan-panel hidden" aria-labelledby="plan-heading">
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">AI interpretation</p>
+          <h2 id="plan-heading">What I searched for</h2>
+        </div>
+        <button id="toggle-plan" class="text-button" type="button">Hide details</button>
+      </div>
+      <div id="plan-content" class="plan-grid"></div>
+    </section>
+
+    <section id="results-section" class="results-section hidden" aria-labelledby="results-heading">
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">Ranked matches</p>
+          <h2 id="results-heading">Results</h2>
+        </div>
+        <span id="result-summary" class="result-summary"></span>
+      </div>
+      <div id="results" class="results-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      AO3 LLM is an independent search interface and is not affiliated with the Organization for Transformative Works or Archive of Our Own.
+      Search results link back to AO3.
+    </p>
+  </footer>
+
+  <script src="./config.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
