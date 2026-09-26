@@ -209,8 +209,7 @@ async function llmJson(env, system, user) {
     messages: [
       { role: "system", content: system },
       { role: "user", content: user }
-    ],
-    temperature: 0.1
+    ]
   };
 
   let response = await fetch(endpoint, {
